@@ -18,7 +18,8 @@ namespace SuperheroesWebApp.Controllers
         // GET: Superheroes
         public ActionResult Index()
         {
-            return View();
+            var superheroes = _context.Superhero.Select(a => a);
+            return View(superheroes);
         }
 
         // GET: Superheroes/Details/5
