@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SuperheroesWebApp.Data;
+using SuperheroesWebApp.Models;
 
 namespace SuperheroesWebApp.Controllers
 {
@@ -25,7 +26,8 @@ namespace SuperheroesWebApp.Controllers
         // GET: Superheroes/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            Superhero superhero = _context.Superhero.First(a => a.SuperheroId == id);
+            return View(superhero);
         }
 
         // GET: Superheroes/Create
@@ -37,12 +39,13 @@ namespace SuperheroesWebApp.Controllers
         // POST: Superheroes/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Superhero superhero)
         {
             try
             {
                 // TODO: Add insert logic here
-
+                _context.Superhero.Add(superhero);
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -54,7 +57,15 @@ namespace SuperheroesWebApp.Controllers
         // GET: Superheroes/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            try
+            {
+                var superhero = _context.Superhero.First(a => a.SuperheroId == id);
+                return View(superhero);
+            }
+            catch
+            {
+                return View();
+            }
         }
 
         // POST: Superheroes/Edit/5

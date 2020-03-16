@@ -14,7 +14,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
+                <input asp-for="Name" class="form-control" value="@{Html.DisplayFor(model => model.Name);}" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -42,7 +42,48 @@
             </div>
         </form>
     </div>
-</div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AlterEgo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PrimaryAbility)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SecondaryAbility)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Catchphrase)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => modelItem.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => modelItem.AlterEgo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => modelItem.PrimaryAbility)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => modelItem.SecondaryAbility)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => modelItem.Catchphrase)
+                    </td>
+                </tr>
+        </table>
+    </div>
 
 <div>
     <a asp-action="Index">Back to List</a>
