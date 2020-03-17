@@ -350,5 +350,7 @@ MigrationBackup/
 .ionide/
 
 # User-defined
-/SuperheroesWebApp/wwwroot/
+/SuperheroesWebApp/wwwroot/css*
+/SuperheroesWebApp/wwwroot/js*
+/SuperheroesWebApp/wwwroot/lib*
 /SuperheroesWebApp/appsettings*
