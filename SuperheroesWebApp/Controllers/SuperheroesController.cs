@@ -82,6 +82,7 @@ namespace SuperheroesWebApp.Controllers
                 foundSuperhero.SecondaryAbility = superhero.SecondaryAbility;
                 foundSuperhero.AlterEgo = superhero.AlterEgo;
                 foundSuperhero.Catchphrase = superhero.Catchphrase;
+                foundSuperhero.RefPicture = superhero.RefPicture;
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
@@ -108,12 +109,14 @@ namespace SuperheroesWebApp.Controllers
         // POST: Superheroes/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, Superhero superhero)
         {
             try
             {
                 // TODO: Add delete logic here
-
+                Superhero foundSuperhero = _context.Superhero.First(a => a.SuperheroId == id);
+                _context.Remove(foundSuperhero);
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             catch
