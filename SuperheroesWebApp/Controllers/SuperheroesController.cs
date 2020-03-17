@@ -94,7 +94,15 @@ namespace SuperheroesWebApp.Controllers
         // GET: Superheroes/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            try
+            {
+                Superhero superhero = _context.Superhero.First(a => a.SuperheroId == id);
+                return View(superhero);
+            }
+            catch
+            {
+                return View();
+            }
         }
 
         // POST: Superheroes/Delete/5

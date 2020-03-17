@@ -15,6 +15,7 @@ namespace SuperheroesWebApp.Models
         public string PrimaryAbility { get; set; }
         public string SecondaryAbility { get; set; }
         public string Catchphrase { get; set; }
+        public string RefPicture { get; set; }
         public Superhero()
         {
 
